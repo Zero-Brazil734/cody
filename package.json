@@ -1,0 +1,38 @@
+{
+  "name": "cody",
+  "version": "0.0.0",
+  "description": "이 레포지토리는 ECMAScript 6에 추가된 class라는 유사 객체 및 관련 객체를 정의하는 주요 방법을 중점적으로 쓰여진 디스코드 봇 오픈소스입니다.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "node bot.js",
+    "start": "nodemon bot.js",
+    "pm2": "pm2 start bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zero-Brazil734/cody.git"
+  },
+  "author": {
+    "name": "제로ㅣBrazil",
+    "email": "zero734kr@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "StayCute™",
+      "url": "https://discord.gg/u8AYWkH"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "email": "zero734kr@gmail.com",
+    "url": "https://github.com/Zero-Brazil734/cody/issues"
+  },
+  "homepage": "https://github.com/Zero-Brazil734/cody#readme",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "moment-timezone": "^0.5.27",
+    "require-all": "^3.0.0"
+  }
+}
