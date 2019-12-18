@@ -19,7 +19,7 @@ class Eval extends Command {
         this.usage = "cmd [code]"
 
         this.allowDM = true
-        this.perms = ["devonly"]
+        this.perm = "devonly"
 
         this.dir = __filename
     }

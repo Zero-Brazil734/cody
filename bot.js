@@ -8,11 +8,12 @@
  * @see https://github.com/Zero-Brazil734/cody/blob/master/README.md
  */
 
+require("./src/utils/index").loadConfigs({ path: __dirname + "/src/configs/.env"})
 
 const Client = require("./src/client/client")
 const client = new Client({ 
     disableEveryone: true,
-    dev: "462355431071809537" //주의: dev는 discord.js의 Client 옵션이 아닙니다. 지원하는 타입: String / Array
+    dev: process.env.DEV //주의: dev는 discord.js의 Client 옵션이 아닙니다. 지원하는 타입: String / Array
 })
 
 client.logger.global("---------------[ Commands Loading... ]---------------")

@@ -28,13 +28,13 @@ class Command {
          */
         this.category = "기타"
         /**
-         * @param {string|undefined} description - 명령어의 설명
+         * @param {string} description - 명령어의 설명
          */
-        this.description = undefined
+        this.description = ""
         /**
-         * @param {string|undefined} usage - 명령어의 사용법
+         * @param {string} usage - 명령어의 사용법
          */
-        this.usage = undefined
+        this.usage = ""
 
         /**
          * @param {boolean} allowDM - DM에서 명령어 사용 허용
@@ -45,9 +45,13 @@ class Command {
          */
         this.allowUsers = []
         /**
-         * @param {string[]} perms - 명령어의 권한 설정 목록
+         * @param {string[]} allowRoles - 권한이 부족해도 사용을 허가할 역할 목록
          */
-        this.perms = []
+        this.allowRoles = []
+        /**
+         * @param {string[]} perm - 명령어의 권한 설정 목록
+         */
+        this.perm = "user"
 
         /**
          * @param {string|null} dir - 명령어의 파일 경로
@@ -65,7 +69,7 @@ class Command {
      * @param {object} message - Client#message event
      * @param {string[]} args - 아거먼트 
      */
-    async run(message, args) {}
+    async run(message, args) { }
 }
 
 /** @exports Command */

@@ -204,28 +204,21 @@ class Cody extends Client {
             var filterDev = this.dev.includes(message.author.id)
         } else if (typeof this.dev === "string") {
             var filterDev = message.author.id === this.dev
-        } else {
+        } else if (this.dev !== undefined) {
             this.logger.error("Client#dev 옵션은 타입으로써 String 또는 Array만 지원합니다.")
         }
 
-        if (this.commands.get(command)) {
-            let cmd = this.commands.get(command)
+        let cmd = this.commands.get(command) || this.aliases.get(command)
+
+        if (cmd) {
+            if (!Array.isArray(cmd.allowUsers)) this.logger.error(`${cmd.name} 명령어의 allowUsers 설정은 Array이여야 합니다.`)
+            if (!Array.isArray(cmd.allowRoles)) this.logger.error(`${cmd.name} 명령어의 allowRoles 설정은 Array이여야 합니다.`)
+            if (typeof cmd.allowDM !== "boolean") this.logger.error(`${cmd.name} 명령어의 allowDM 설정은 Boolean이여야 합니다.`)
+            if (typeof cmd.perm !== "string") this.logger.error(`${cmd.name} 명령어의 perm 설정은 String이여야 합니다.`)
 
             if (cmd.allowDM !== true && message.channel.type === "dm") return
-            if ((cmd.perms ? cmd.perms.includes("devonly") : false) === false && !filterDev && (cmd.allowUsers ? cmd.allowUsers.includes(message.author.id) : false) === false) return message.channel.send(`${message.author} 님은 해당 명령어를 실행할 권한이 없습니다.`)
-            if ((cmd.perms ? cmd.perms.includes("admin") : false) === false && !filterDev && (message.member ? message.member.hasPermission("ADMINISTRATOR") : false) === false) return message.channel.send(`${message.author} 님은 해당 명령어를 실행할 권한이 없습니다.`)
-
-            cmd.run(message, args)
-
-            return true
-        }
-
-        if (this.aliases.get(command)) {
-            let cmd = this.aliases.get(command)
-
-            if (cmd.allowDM !== true && message.channel.type === "dm") return
-            if ((cmd.perms ? cmd.perms.includes("devonly") : false) === false && !filterDev && (cmd.allowUsers ? cmd.allowUsers.includes(message.author.id) : false) === false) return message.channel.send(`${message.author} 님은 해당 명령어를 실행할 권한이 없습니다.`)
-            if ((cmd.perms ? cmd.perms.includes("admin") : false) === false && !filterDev && (message.member ? message.member.hasPermission("ADMINISTRATOR") : false) === false) return message.channel.send(`${message.author} 님은 해당 명령어를 실행할 권한이 없습니다.`)
+            if (cmd.perm === "devonly" === true && !filterDev && !cmd.allowUsers.includes(message.author.id) && (message.member ? cmd.allowRoles.includes(message.member.highestRole.id) : false) === false) return message.channel.send(`${message.author} 님은 해당 명령어를 실행할 권한이 없습니다.`)
+            if (cmd.perm === "admin" === true && !filterDev && !cmd.allowUsers.includes(message.author.id) && (message.member ? cmd.allowRoles.includes(message.member.highestRole.id) : false) === false && (message.member ? !message.member.hasPermission("ADMINISTRATOR") : false) === false) return message.channel.send(`${message.author} 님은 해당 명령어를 실행할 권한이 없습니다.`)
 
             cmd.run(message, args)
 
