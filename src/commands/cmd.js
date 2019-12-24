@@ -35,7 +35,7 @@ class Eval extends Command {
                 let code = type = res
 
                 if (typeof code !== "string") code = util.inspect(code, { depth: 0 })
-                if (typeof type === "function") code = code.toString()
+                if (typeof type === "function") code = type.toString()
 
                 let evalEmbed = new this.embed()
                     .setAuthor("Eval", message.author.avatarURL)
