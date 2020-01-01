@@ -1,0 +1,26 @@
+{
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    //"extends": "eslint:recommended",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "indent": 0
+        "quotes": 0
+        "semi": 0
+        "no-redeclare": 0,
+        "no-unused-vars": 0,
+        "linebreak-style": 0
+    }
+}
+
+
+//ESLint 설정 파일이니 자신에 맞게 수정 후 사용 해주세요.
