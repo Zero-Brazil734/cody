@@ -66,7 +66,8 @@ npm run pm2
 👤 **제로ㅣBrazil** (*StayCute™*)
 
 * Github: [@Zero-Brazil734](https://github.com/Zero-Brazil734)
-* Team Discord: [@staycute](https://discord.gg/u8AYWkH)
+* Team Discord: [@staycute](https://discord.gg/2UxaNp8)
+* Team GitHub: [@staycute](https://github.com/staycute)
 
 ## 🤝 Contributing
 
